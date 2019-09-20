@@ -12,10 +12,5 @@ print("Good day" + full_name + "!" + day
 # Using python as a calculator.
 a = 1
 b = 2
-print(a+b)
-print(a-b)
-print(a/b)
-print(a*b)
-print(a**b)
-print(a % b)
-print(a//b)
+print(a+b, a-b, a/b, a*b, a**b, a % b, a//b)
+
