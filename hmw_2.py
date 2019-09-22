@@ -13,8 +13,7 @@ word = input()
 print(sentence.count(word))
 
 # third task
-number = int(input())
-number = str(number)
+number = input()
 if number[::-1] == number:
     print(True)
 else:
