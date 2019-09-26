@@ -1,3 +1,4 @@
+import random
 # first task
 string = "test1, test2, test3, test4, test5"
 string = string.split(',')
@@ -17,3 +18,9 @@ print(string1.replace(f"{number}{','}", ""))
 # url = input()
 url = 'https://realpython.com/courses/python-thonny/'
 print(url.split('/')[2])
+
+# third task
+# Research
+num = random.randint(0, 10)
+num1 = int(input("Enter a number from 0 to 10"))
+print(num == num1)
