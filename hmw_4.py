@@ -38,6 +38,7 @@ def coll_seq(n):
         else:
             n = n * 3 + 1
             print(n)
+    return n
 
 
 print(coll_seq(number))
