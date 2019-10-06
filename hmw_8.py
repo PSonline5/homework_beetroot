@@ -9,8 +9,6 @@
 
 
 class Mathematician:
-    def __init__(self):
-        pass
 
     def square_nums(self, list1):
         return [num ** 2 for num in list1]
