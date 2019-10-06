@@ -66,4 +66,3 @@ assert p.quantity == 120
 assert p.price == 100
 p.set_discount(25)
 assert p.price == 75
-
