@@ -9,23 +9,20 @@
 
 
 class Mathematician:
-    def __init__(self, name):
-        self.name = name
+    def __init__(self):
+        pass
 
     def square_nums(self, list1):
-        self.list1 = list1
-        return [num ** 2 for num in self.list1]
+        return [num ** 2 for num in list1]
 
     def remove_positives(self, list2):
-        self.list2 = list2
-        return [num2 for num2 in self.list2 if num2 < 0]
+        return [num2 for num2 in list2 if num2 < 0]
 
     def filter_leaps(self, list3):
-        self.list3 = list3
-        return [num3 for num3 in self.list3 if num3 % 4 == 0]
+        return [num3 for num3 in list3 if num3 % 4 == 0]
 
 
-m = Mathematician('Helper')
+m = Mathematician()
 
 assert m.square_nums([7, 11, 5, 4]) == [49, 121, 25, 16]
 assert m.remove_positives([26, -11, -8, 13, -90]) == [-11, -8, -90]
@@ -54,7 +51,7 @@ class Product:
 
     def set_discount(self, percent):
         self.price -= percent
-        return f"{self.price} price with {percent} %"
+        return f"{self.price} %"
 
 
 p = Product('Sport', 'Football T-Shirt', 100, 30)
