@@ -57,7 +57,6 @@ class Computer(Gadget):  # OS, applications, trash == list
             print("This app already exist")
         return self.applications
 
-
     def del_app(self, app):
         self.app = app
         self.applications.remove(self.app)
