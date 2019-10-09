@@ -59,6 +59,7 @@ class Computer(Gadget):  # OS, applications, trash == list
 
     def del_app(self, app):
         self.app = app
+        self.trash_.append(self.app)
         self.applications.remove(self.app)
         return self.applications
 
