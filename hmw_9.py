@@ -82,13 +82,12 @@ class TV(Gadget):   # chanels_list settings
     def add_channel(self, channel):
         self.channel = channel
         self.channels_list.append(self.channel)
+        return self.channels_list
 
     def del_channel(self, channel):
         self.channel = channel
         self.channels_list.remove(self.channel)
+        return self.channels_list
 
     def edit_settings(self, **settings):
         self.settings = settings.update()
-
-
-
