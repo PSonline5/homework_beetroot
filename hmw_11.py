@@ -34,7 +34,7 @@ import random
 
 class ATM:
     def __init__(self, bank, amount):
-        self.bank = Bank(bank)
+        self.bank = bank
         self.amount = amount
 
     def withdraw(self, card, sum):
@@ -46,10 +46,12 @@ class ATM:
             if sum < card.balance:
                 print("You can't withdraw this sum,try less")
             else:
-                return card.balance - sum
+                card.balance = card.balance - sum
+                return card.balance
 
     def add(self, card, sum):
-        return card.balance + sum
+        card.balance = card.balance + sum
+        return card.balance
 
     def change_pin(self, card, old_pin, new_pin):
         if card.pin == old_pin:
@@ -63,10 +65,10 @@ class Bank:
         self.accounts = set()
 
     def open_account(self, client):
-        account = Client(client)
-        card = Card(random.randint(10000, 99999), 0.0, 0000, account, self.name)
-        account.cards.append(card)
-        return self.accounts.add(account)
+        card = Card(random.randint(10000, 99999), 0.0, 0000, client, self.name)
+        client.cards.append(card)
+        self.accounts.add(client)
+        return card
 
     def close_account(self, card):
         self.accounts.remove(card)
@@ -91,12 +93,15 @@ class Card:
         self.bank = Bank(bank)
 
     def transfer_money(self, card, amount):
-        pass
+        self.balance = self.balance - amount
+        card.balance = card.balance + amount
+        return self.balance
 
 
 client = Client("John")
 bank = Bank("PrivatBank")
 atm = ATM(bank, 10000)
+
 
 card = bank.open_account(client)
 assert card.balance == 0.0
