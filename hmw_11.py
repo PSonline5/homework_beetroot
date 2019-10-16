@@ -120,6 +120,7 @@ assert card.balance == 500.0
 def choose_func(nums: list, func1, func2):
     for num in nums:
         if num > 0:
+            func1
             a = func1(nums)
         else:
             b = func2(nums)
