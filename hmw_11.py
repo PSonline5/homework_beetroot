@@ -40,10 +40,8 @@ class ATM:
     def withdraw(self, card, sum):
         if sum > self.amount:
             print("Sorry, we don't have this amount of money")
-        if self.bank not in card.bank:
-            print("This card is not valid")
         else:
-            if sum < card.balance:
+            if sum > card.balance:
                 print("You can't withdraw this sum,try less")
             else:
                 card.balance = card.balance - sum
@@ -79,9 +77,12 @@ class Client:
         self.name = name
         self.cards = []
 
-    def show_total_balance(self):
-        self.cards = sum(card.balance)
-        return self.cards
+    # def show_total_balance(self):
+    #     total = []
+    #     for money in self.cards:
+    #         if money == card.balance:
+    #             total.append(money)
+    #     return total
 
 
 class Card:
@@ -101,11 +102,43 @@ class Card:
 client = Client("John")
 bank = Bank("PrivatBank")
 atm = ATM(bank, 10000)
+wallet = Card(22222, 250.0, 0000, client, bank)
 
-
+# print(client.show_total_balance())
 card = bank.open_account(client)
 assert card.balance == 0.0
 
 atm.add(card, 500)
 assert card.balance == 500.0
 
+# Write a function called choose_func which takes a list of nums and 2
+# callback functions. If all nums inside the list are positive, execute the
+# first function on that list and return the result of it. Otherwise return the
+# result of the second one
+
+
+def choose_func(nums: list, func1, func2):
+    for num in nums:
+        if num > 0:
+            a = func1(nums)
+        else:
+            b = func2(nums)
+            return b
+    return a
+
+
+# Assertions
+nums1 = [1, 2, 3, 4, 5]
+nums2 = [1, -2, 3, -4, 5]
+
+
+def square_nums(nums):
+    return [num ** 2 for num in nums]
+
+
+def remove_negatives(nums):
+    return [num for num in nums if num > 0]
+
+
+assert choose_func(nums1, square_nums, remove_negatives) == [1, 4, 9, 16, 25]
+assert choose_func(nums2, square_nums, remove_negatives) == [1, 3, 5]
