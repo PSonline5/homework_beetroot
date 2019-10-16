@@ -48,16 +48,13 @@ class ATM:
             else:
                 return card.balance - sum
 
-
     def add(self, card, sum):
-        card = card.balance
-        return card + sum
+        return card.balance + sum
 
     def change_pin(self, card, old_pin, new_pin):
-        card = card.pin
         if card.pin == old_pin:
             card.pin = new_pin
-            return card
+            return card.pin
 
 
 class Bank:
@@ -67,7 +64,7 @@ class Bank:
 
     def open_account(self, client):
         account = Client(client)
-        card = Card(random.randint(10000, 99999), 0.0, 0000, account, self.name,)
+        card = Card(random.randint(10000, 99999), 0.0, 0000, account, self.name)
         account.cards.append(card)
         return self.accounts.add(account)
 
@@ -92,6 +89,9 @@ class Card:
         self.pin = pin
         self.owner = Client(owner)
         self.bank = Bank(bank)
+
+    def transfer_money(self, card, amount):
+        pass
 
 
 client = Client("John")
