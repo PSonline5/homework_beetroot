@@ -38,6 +38,8 @@ class ATM:
         self.amount = amount
 
     def withdraw(self, card, sum):
+        # if self.bank != card.bank:
+        #     print("This card is not valid")
         if sum > self.amount:
             print("Sorry, we don't have this amount of money")
         else:
@@ -101,8 +103,10 @@ class Card:
 
 client = Client("John")
 bank = Bank("PrivatBank")
+bank1= Bank("AlfaBank")
 atm = ATM(bank, 10000)
 wallet = Card(22222, 250.0, 0000, client, bank)
+print(atm.withdraw(wallet, 20))
 
 # print(client.show_total_balance())
 card = bank.open_account(client)
@@ -120,7 +124,6 @@ assert card.balance == 500.0
 def choose_func(nums: list, func1, func2):
     for num in nums:
         if num > 0:
-            func1
             a = func1(nums)
         else:
             b = func2(nums)
