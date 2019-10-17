@@ -65,10 +65,10 @@ class Bank:
         self.accounts = set()
 
     def open_account(self, client):
-        card = Card(random.randint(10000, 99999), 0.0, 0000, client, self.name)
-        client.cards.append(card)
-        self.accounts.add(client)
-        return card
+            card = Card(random.randint(10000, 99999), 0.0, 0000, client, self.name)
+            client.cards.append(card)
+            self.accounts.add(client)
+            return card
 
     def close_account(self, card):
         self.accounts.remove(card)
@@ -79,12 +79,9 @@ class Client:
         self.name = name
         self.cards = []
 
-    # def show_total_balance(self):
-    #     total = []
-    #     for money in self.cards:
-    #         if money == card.balance:
-    #             total.append(money)
-    #     return total
+    def show_total_balance(self):
+        return sum([x.balance for x in self.cards])
+
 
 
 class Card:
@@ -103,18 +100,14 @@ class Card:
 
 client = Client("John")
 bank = Bank("PrivatBank")
-bank1= Bank("AlfaBank")
-atm = ATM(bank, 10000)
-wallet = Card(22222, 250.0, 0000, client, bank)
-print(atm.withdraw(wallet, 20))
 
-# print(client.show_total_balance())
+atm = ATM(bank, 10000)
+
 card = bank.open_account(client)
 assert card.balance == 0.0
 
 atm.add(card, 500)
 assert card.balance == 500.0
-
 # Write a function called choose_func which takes a list of nums and 2
 # callback functions. If all nums inside the list are positive, execute the
 # first function on that list and return the result of it. Otherwise return the
