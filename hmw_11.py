@@ -38,8 +38,8 @@ class ATM:
         self.amount = amount
 
     def withdraw(self, card, sum):
-        # if self.bank != card.bank:
-        #     print("This card is not valid")
+        if self.bank.name != card.bank.name:
+            print("This card is not valid")
         if sum > self.amount:
             print("Sorry, we don't have this amount of money")
         else:
