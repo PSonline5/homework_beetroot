@@ -82,9 +82,11 @@ class Boss:
         self.workers.remove(worker)
 
 
-class Worker(Boss):
+class Worker:
     def __init__(self, id_: int, name: str, company: str, boss: Boss):
-        super().__init__(id_, name, company)
+        self.id_ = id_
+        self.name = name
+        self.company = company
         self._boss = boss
         boss.add_worker(self)
 
