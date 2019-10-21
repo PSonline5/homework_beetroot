@@ -92,5 +92,5 @@ class Worker:
 
     @property
     def boss(self):
-        if self == Boss(self.id, self.name, self.company):
+        if isinstance(self._boss, Boss):
             return self._boss
