@@ -16,32 +16,28 @@ class TypeDecorators:
     def to_int(func):
         @wraps(func)
         def wrapper(*args):
-            x = int(func(*args))
-            return x
+            return int(func(*args))
         return wrapper
 
     @staticmethod
     def to_str(func):
         @wraps(func)
         def wrapper(*args):
-            x = str(func(*args))
-            return x
+            return str(func(*args))
         return wrapper
 
     @staticmethod
     def to_bool(func):
         @wraps(func)
         def wrapper(*args):
-            x = bool(func(*args))
-            return x
+            return bool(func(*args))
         return wrapper
 
     @staticmethod
     def to_float(func):
         @wraps(func)
         def wrapper(*args):
-            x = float(func(*args))
-            return x
+            return float(func(*args))
         return wrapper
 
 
