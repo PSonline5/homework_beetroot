@@ -1,5 +1,4 @@
 from functools import wraps
-from random import randint
 # Write a class TypeDecorators which has several methods for converting
 # results of functions to a specified type (if it's possible):
 # methods:
@@ -71,22 +70,32 @@ class Boss:
         self.id = id_
         self.name = name
         self.company = company
-        self.workers = []
+        self.workers = set()
 
     def add_worker(self, worker):
-        worker = Worker(randint(0, 10), self.name, self.company, worker._boss)
-        self.workers.append(worker)
-        return worker
+        if isinstance(worker, Worker):
+            self.workers.add(worker)
+        else:
+            print("You can't add it to workers list")
+
+    def remove_worker(self, worker):
+        self.workers.remove(worker)
 
 
-class Worker:
+class Worker(Boss):
     def __init__(self, id_: int, name: str, company: str, boss: Boss):
-        self.id = id_
-        self.name = name
-        self.company = company
+        super().__init__(id_, name, company)
         self._boss = boss
+        boss.add_worker(self)
 
     @property
     def boss(self):
-        if isinstance(self._boss, Boss):
-            return self._boss
+        return self._boss
+
+    @boss.setter
+    def boss(self, value):
+        if not isinstance(value, Worker):
+            self._boss.remove_worker(self)
+            value.add_worker(self)
+        else:
+            print('He is not a Boss')
