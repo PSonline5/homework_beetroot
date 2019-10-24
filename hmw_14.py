@@ -136,17 +136,17 @@ bosses[0].dump_workers()
 
 # Version 2
 
-filename = 'files/workers2.csv'
+file1 = 'files/workers2.csv'
 
 workers_list = [workers[index].__dict__ for index, dict_ in enumerate(workers)]
 
-with open(filename, 'w', newline='') as file:
+with open(file1, 'w', newline='') as file:
     columns = ['id', 'name', 'company', '_boss']
     writer = csv.DictWriter(file, fieldnames=columns)
     writer.writeheader()
     writer.writerows(workers_list)
 
-with open(filename, 'r', newline='') as file:
+with open(file1, 'r', newline='') as file:
     reader = csv.DictReader(file)
     for row in reader:
         print(row['id'], row['name'], row['company'], row['_boss'], sep=',')
@@ -154,7 +154,7 @@ with open(filename, 'r', newline='') as file:
 
 # Version 3
 
-filename2 = 'files/workers3.csv'
+file2 = 'files/workers3.csv'
 
 df = DataFrame(workers_list, columns=['id', 'name', 'company', '_boss'])
 
