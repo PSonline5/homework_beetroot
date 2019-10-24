@@ -1,1 +1,5 @@
-a
+id_,name,company,boss_id
+1,Jack,Samsung,0
+2,Kate,Nike,4
+3,David,Nike,4
+4,Scott,Privatbank,3
