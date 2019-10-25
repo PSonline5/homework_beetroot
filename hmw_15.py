@@ -10,7 +10,9 @@ import time
 class Logger:
     def __init__(self, file_name):
         self.file_name = file_name
-        self.timestamp = time.time()
+
+    def __call__(self, *args, **kwargs):
+        pass
 
     def __enter__(self):
         print("Operation Started")
@@ -23,9 +25,8 @@ class Logger:
         self.log_method(self)
 
     def log_method(self, value):
-        with open(self.file_name, 'a') as log:
-            log.write(f"'[{self.timestamp}]' {value}\n")
-        return print("Operation Completed")
+        with open(self.file_name, 'a+') as log:
+            log.write(f"[{time.time()}]{value}\n")
 
 
 with Logger('files/log3.txt') as logger:
