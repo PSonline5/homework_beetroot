@@ -37,7 +37,7 @@
 #   raised when you try to add a song to an album and artists don't match.
 
 
-class WrongArtistError:
+class WrongArtistError(Exception):
     pass
 
 
@@ -89,7 +89,7 @@ class Song:
             if self.artist == self.album.artist:
                 self.album.songs.append(self)
             else:
-                raise WrongArtistError
+                raise WrongArtistError("This is a wrong artist")
         except AttributeError:
             print("This should be a song")
         finally:
