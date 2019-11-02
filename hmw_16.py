@@ -64,7 +64,7 @@ class Album:
         self.genre = genre
         self.artist = artist
         self.songs = []
-        artist.album_list.append(self)
+        self.artist.album_list.append(self)
 
     @property
     def songs_number(self):
@@ -76,13 +76,14 @@ class Album:
 
 
 class Song:
-    def __init__(self, name, artist, features, year, duration, album):
+    def __init__(self, name, artist, features, year, duration, album=None):
         self.name = name
         self.artist = artist
         self.features = features
         self.year = year
         self.duration = duration
         self.album = album
+        self.artist.songs_list.append(self)
 
         try:
             if self.artist == self.album.artist:
