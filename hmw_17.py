@@ -37,6 +37,7 @@ def copy_string(string: str) -> str:
     else:
         with open('file123.txt', 'a+') as file:
             file.write(string[0])
+        print(string[0])
         return copy_string(string[1:])
 
 
