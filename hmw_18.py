@@ -18,6 +18,9 @@ class DictStack:
             new_dicts[i] = self.__dicts[i]
         return new_dicts
 
+    def reverse_in_place(self):
+        self.__dicts = self.reverse()
+
     def index(self, item):
         for index, value in self.__dicts.items():
             if value == item:
