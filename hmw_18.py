@@ -43,7 +43,12 @@ class DictStack:
         return new_string
 
     def sum(self):
-        pass
+        result = 0
+        for item in self.__dicts.values():
+            if not isinstance(item, int):
+                raise TypeError("It is not int")
+            result += item
+        return result
 
     def enqueue(self, item):
         if self.is_full:
